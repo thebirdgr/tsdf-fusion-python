@@ -4,6 +4,9 @@ import numpy as np
 
 from numba import njit, prange
 from skimage import measure
+# from tvm.autotvm.measure.measure_methods import set_cuda_target_arch
+# set_cuda_target_arch('sm_80')
+
 
 try:
   import pycuda.driver as cuda
@@ -56,6 +59,7 @@ class TSDFVolume:
 
     # Copy voxel volumes to GPU
     if self.gpu_mode:
+    # if False:
       self._tsdf_vol_gpu = cuda.mem_alloc(self._tsdf_vol_cpu.nbytes)
       cuda.memcpy_htod(self._tsdf_vol_gpu,self._tsdf_vol_cpu)
       self._weight_vol_gpu = cuda.mem_alloc(self._weight_vol_cpu.nbytes)
@@ -215,13 +219,14 @@ class TSDFVolume:
       obs_weight (float): The weight to assign for the current observation. A higher
         value
     """
-    im_h, im_w = depth_im.shape
+    im_h, im_w, ch = depth_im.shape
 
     # Fold RGB color image into a single channel image
     color_im = color_im.astype(np.float32)
     color_im = np.floor(color_im[...,2]*self._color_const + color_im[...,1]*256 + color_im[...,0])
 
     if self.gpu_mode:  # GPU mode: integrate voxel volume (calls CUDA kernel)
+    # if False:
       for gpu_loop_idx in range(self._n_gpu_loops):
         self._cuda_integrate(self._tsdf_vol_gpu,
                             self._weight_vol_gpu,
@@ -294,6 +299,7 @@ class TSDFVolume:
 
   def get_volume(self):
     if self.gpu_mode:
+    # if False:
       cuda.memcpy_dtoh(self._tsdf_vol_cpu, self._tsdf_vol_gpu)
       cuda.memcpy_dtoh(self._color_vol_cpu, self._color_vol_gpu)
     return self._tsdf_vol_cpu, self._color_vol_cpu
@@ -304,7 +310,8 @@ class TSDFVolume:
     tsdf_vol, color_vol = self.get_volume()
 
     # Marching cubes
-    verts = measure.marching_cubes_lewiner(tsdf_vol, level=0)[0]
+    # verts = measure.marching_cubes_lewiner(tsdf_vol, level=0)[0]
+    verts = measure.marching_cubes(tsdf_vol, level=0)[0]
     verts_ind = np.round(verts).astype(int)
     verts = verts*self._voxel_size + self._vol_origin
 
@@ -325,7 +332,8 @@ class TSDFVolume:
     tsdf_vol, color_vol = self.get_volume()
 
     # Marching cubes
-    verts, faces, norms, vals = measure.marching_cubes_lewiner(tsdf_vol, level=0)
+    # verts, faces, norms, vals = measure.marching_cubes_lewiner(tsdf_vol, level=0)
+    verts, faces, norms, vals = measure.marching_cubes(tsdf_vol, level=0)
     verts_ind = np.round(verts).astype(int)
     verts = verts*self._voxel_size+self._vol_origin  # voxel grid coordinates to world coordinates
 
