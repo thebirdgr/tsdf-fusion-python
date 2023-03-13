@@ -219,8 +219,8 @@ class TSDFVolume:
       obs_weight (float): The weight to assign for the current observation. A higher
         value
     """
-    im_h, im_w, ch = depth_im.shape
-
+    # im_h, im_w, ch = depth_im.shape
+    im_h, im_w = depth_im.shape
     # Fold RGB color image into a single channel image
     color_im = color_im.astype(np.float32)
     color_im = np.floor(color_im[...,2]*self._color_const + color_im[...,1]*256 + color_im[...,0])
