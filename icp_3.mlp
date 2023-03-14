@@ -1,0 +1,90 @@
+<!DOCTYPE MeshLabDocument>
+<MeshLabProject>
+ <MeshGroup>
+  <MLMesh filename="kinect_kifu_icp-pc.ply" idInFile="-1" visible="0" label="World to camera">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">000111010000000000000100000001000000001010100000000100111010110000001101</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp.ply" idInFile="-1" visible="0" label="world-to-camera-icp">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">100001010000000000000100000001010110000010100000000100111010100000001001</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp.ply" idInFile="-1" visible="0" label="camera-to-world-.ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">100001010000000000000100000001010110000010100000000100111010100000001001</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp-pc.ply" idInFile="-1" visible="0" label="camera-to-world-icp.ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">000111010000000000000100000001000000001010100000000100111010110000001101</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp-pc.ply" idInFile="-1" visible="0" label="kinect_kifu_beer_icp-pc.ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">000111010000000000000100000001000000001010100000000100111010110000001101</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp.ply" idInFile="-1" visible="0" label="kinect_kifu_beer_icp.ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">100001010000000000000100000001010110000010100000000100111010100000001001</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp.ply" idInFile="-1" visible="0" label="kinect_kifu_icp.ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">100001010000000000000000000001010110000010100000000100111010100000001001</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp-pc.ply" idInFile="-1" visible="0" label="kinect_kifu_icp-pc.ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">000111010000000000000000000000000000000010100000000100111010110000001101</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp.ply" idInFile="-1" visible="0" label="kinect_kifu_icp(1).ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">100001010000000000000000000001010110000010100000000100111010100000001001</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp-pc.ply" idInFile="-1" visible="0" label="kinect_kifu_icp-pc(1).ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">000111010000000000000000000000000000000010100000000100111010110000001101</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp.ply" idInFile="-1" visible="0" label="kinect_kifu_icp(2).ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">100001010000000000000000000001010110000010100000000100111010100000001001</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp-pc.ply" idInFile="-1" visible="0" label="kinect_kifu_icp-pc(2).ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">000111010000000000000000000000000000000010100000000100111010110000001101</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp.ply" idInFile="-1" visible="1" label="kinect_kifu_icp(3).ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">100001010000000000000000000001010110000010100000000100111010100000001001</RenderingOption>
+  </MLMesh>
+  <MLMesh filename="kinect_kifu_icp-pc.ply" idInFile="-1" visible="1" label="kinect_kifu_icp-pc(3).ply">
+   <MLMatrix44>
+1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 
+</MLMatrix44>
+   <RenderingOption solidColor="192 192 192 255" pointColor="252 233 79 255" wireColor="64 64 64 255" pointSize="3" boxColor="234 234 234 255" wireWidth="1">000111010000000000000000000000000000000010100000000100111010110000001101</RenderingOption>
+  </MLMesh>
+ </MeshGroup>
+ <RasterGroup/>
+</MeshLabProject>

@@ -8,7 +8,7 @@ import numpy as np
 
 import fusion
 
-DATA_PATH = "/home/thebird/catkin_ws/src/realsense2_description/data_icp"
+DATA_PATH = "/home/thebird/catkin_ws/src/realsense2_description/data_real"
 
 if __name__ == "__main__":
   # ======================================================================================================== #
@@ -18,18 +18,23 @@ if __name__ == "__main__":
   # ======================================================================================================== #
   print("Estimating voxel volume bounds...")
   # n_imgs = 100
-  n_imgs = 500
-  cam_intr = np.loadtxt("data/camera-intrinsics.txt", delimiter=' ') # this might be an issue where te camera intrinsics of the intelrealsense and the kinect are different
+  n_imgs = 63
+  cam_intr = np.loadtxt("/home/thebird/catkin_ws/src/realsense2_description/data_real/camera-intrinsics.txt", delimiter=' ') # this might be an issue where te camera intrinsics of the intelrealsense and the kinect are different
   vol_bnds = np.zeros((3,2))
   for i in range(n_imgs):
     # Read depth image and camera pose
     # depth_im = cv2.imread("data/frame-%06d.depth.png"%(i),-1).astype(float)
-    depth_im = cv2.imread("/home/thebird/catkin_ws/src/realsense2_description/data_icp/frame-%06d.depth.png"%(i),-1).astype(float)
+
+    # transpose depth image array to world coordinate system
+    # sharp and tall object with many objects
+    depth_im = cv2.imread("/home/thebird/catkin_ws/src/realsense2_description/data_real/frame-%06d.depth.png"%(i),-1).astype(float)
+    
     # print(depth_im.shape)
+
     depth_im /= 1000.  # depth is saved in 16-bit PNG in millimeters
     depth_im[depth_im == 65.535] = 0  # set invalid depth to 0 (specific to 7-scenes dataset)
     # cam_pose = np.loadtxt("/home/thebird/catkin_ws/src/realsense2_description/data/test_batch/frame-%06d.pose.txt"%(i))  # 4x4 rigid transformation matrix
-    cam_pose = np.loadtxt("/home/thebird/catkin_ws/src/realsense2_description/data_icp/frame-%06d.pose.txt"%(i))
+    cam_pose = np.loadtxt("/home/thebird/catkin_ws/src/realsense2_description/data_real/frame-%06d.pose.txt"%(i))
 
     # Compute camera view frustum and extend convex hull
     view_frust_pts = fusion.get_view_frustum(depth_im, cam_intr, cam_pose)
@@ -51,14 +56,14 @@ if __name__ == "__main__":
     print("Fusing frame %d/%d"%(i+1, n_imgs))
 
     # Read RGB-D image and camera pose
-    color_image = cv2.cvtColor(cv2.imread("/home/thebird/catkin_ws/src/realsense2_description/data_icp/frame-%06d.color.jpg"%(i)), cv2.COLOR_BGR2RGB)
-    depth_im =  cv2.imread("/home/thebird/catkin_ws/src/realsense2_description/data_icp/frame-%06d.depth.png"%(i),-1).astype(float)
+    color_image = cv2.cvtColor(cv2.imread("/home/thebird/catkin_ws/src/realsense2_description/data_real/frame-%06d.color.jpg"%(i)), cv2.COLOR_BGR2RGB)
+    depth_im =  cv2.imread("/home/thebird/catkin_ws/src/realsense2_description/data_real/frame-%06d.depth.png"%(i),-1).astype(float)
    
     # color_image = cv2.cvtColor(cv2.imread("data/frame-%06d.color.jpg"%(i)), cv2.COLOR_BGR2RGB)
     # depth_im = cv2.imread("data/frame-%06d.depth.png"%(i),-1).astype(float)
     depth_im /= 1000.
     depth_im[depth_im == 65.535] = 0
-    cam_pose = np.loadtxt(f'{DATA_PATH}/frame-%06d.pose.txt'%(i))
+    cam_pose = np.loadtxt(f'/home/thebird/catkin_ws/src/realsense2_description/data_real/frame-%06d.pose.txt'%(i))
 
     # Integrate observation into voxel volume (assume color aligned with depth)
     tsdf_vol.integrate(color_image, depth_im, cam_intr, cam_pose, obs_weight=1.)

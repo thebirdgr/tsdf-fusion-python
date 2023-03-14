@@ -330,7 +330,7 @@ class TSDFVolume:
     """Compute a mesh from the voxel volume using marching cubes.
     """
     tsdf_vol, color_vol = self.get_volume()
-
+    print(tsdf_vol)
     # Marching cubes
     # verts, faces, norms, vals = measure.marching_cubes_lewiner(tsdf_vol, level=0)
     verts, faces, norms, vals = measure.marching_cubes(tsdf_vol, level=0)
